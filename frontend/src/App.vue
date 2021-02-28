@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Produkter</router-link> |
+      <router-link to="/account">Mitt konto</router-link> |
+      <router-link to="/cart">Kundkorg (modal)</router-link>
     </div>
     <router-view/>
   </div>
@@ -28,5 +29,8 @@
       color: #42b983;
     }
   }
+}
+.modal {
+  color: red;
 }
 </style>
