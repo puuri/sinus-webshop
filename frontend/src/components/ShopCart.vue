@@ -14,7 +14,7 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 export default {
   components: {
     
@@ -23,7 +23,10 @@ export default {
     shopCartHeading: String
   },
   computed: {
-    
+    ...mapState([
+        'products'
+
+      ])
   }
 }
 </script>
