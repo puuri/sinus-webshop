@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ProductList from '../views/ProductList.vue'
+import Product from '../views/Products.vue'
 import MyAccount from '../views/MyAccount.vue'
 
 Vue.use(VueRouter)
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'Products',
-    component: ProductList
+    component: Product
   },
   {
     path: '/account',

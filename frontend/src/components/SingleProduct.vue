@@ -11,7 +11,8 @@
 export default {
     props: {
         singleProductHeading: String
-    }
+    }, 
+     
 }
 </script>
 
