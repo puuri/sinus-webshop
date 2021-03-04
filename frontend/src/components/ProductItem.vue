@@ -1,40 +1,51 @@
 <template>
-  <div class="product-item">
-    <h1>{{ productItemHeading }}</h1>
-   
-<div class="product">
-  <div v-for="prod in products" :key="prod.id">
-          <div class="title"><h1>{{prod.title}}</h1> </div>
-          <p>{{prod.price}} kr</p>
+<div class="wrapper">
+    
+    
+    <div class="oneProduct">
+        <p>{{title}} {{price}}kr</p>
+    <h5>{{shortDesc}}</h5>
 </div>
-  </div>
-  
-  </div>
+
+
+</div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
 export default {
-  props: {
-    productItemHeading: String
-  },
-  computed: {
-      ...mapState([
-        'products'
+    components: {
 
-      ])
-    },
-    mounted: function(){
-      this.$store.dispatch('loadProducts')
-    },
-
-   
-    
+    }, 
+    props: {
+        product: Array,
+        title: String,
+        price: Number,
+        shortDesc: String,
+        
+    }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped >
+<style scoped>
+* {
+    margin: 0;
+    display: block;
+    
+}
+
+.wrapper{
+    flex: 0 1 auto;
+    flex-direction: row;
+    border-style: solid;
+    margin-top: 5vh;
+    
+}
+
+.oneProduct{
+    width: 35vh;
+    height: 40vh;
+    
+}
 
 
 </style>

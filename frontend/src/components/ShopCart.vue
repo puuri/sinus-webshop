@@ -7,15 +7,15 @@
     <p>
       <router-link to="/checkout">Take my money!</router-link>
     </p>
-      <ProductItem v-bind:productItemHeading="'<ProductItem />'"/>
+      
   </div>
 </template>
 
 <script>
-import ProductItem from '@/components/ProductItem.vue'
+
 export default {
   components: {
-    ProductItem
+    
   },
   props: {
     shopCartHeading: String

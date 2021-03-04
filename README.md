@@ -1,174 +1,29 @@
-# SINUS Webshop
+### Grön text - Skrivet av Jessika
 
-## Arbetssätt
-Samla era erfarenheter från Kanban, Scrum och diskussionerna av Modern Agile och kom överens i 
-gruppen om vilka delar och hur ni ska inkorporera detta i ert arbete. 
-Dokumentera vad ni kommer överens om i README.md i ert repository.
+Sinus - Webshop
 
-## Instruktioner
-Ni ska bygga en FrontEnd till en färdig BackEnd. Se `SINUS Webshop - REST API` nedan för mer information.
+Fredag 26/2
 
-Inom gruppen har ni en uppsättning mockups från UI-kursen i höstas, välj en av dessa mockups att utgå ifrån.
-Om ni inte kommer överens om vilken ni ska använda så får ni be läraren om en annan.
+### Möte angående grupprojektet. Vi bestämde oss för att köra enligt Scrum och lägga upp en Kanban board i Trello. Innehållande en 'ej påbörjad', 'påbörjad' och 'klar'. Kom överens om att vi behöver uppdatera listan under arbetets gång då med eventuella nya en påbörjad som vi kommer på under arbetets gång. Repot skapat och alla inbjudna.
 
-Skapa en trello board och bjud alla i gruppen, inkl läraren.
+Lördag 27/2
 
-## SINUS Webshop
+### Vad gjorde Jessika igår? Organiserade hela trello boarden och la till User Stories som ska uppfyllas för användaren. Tänkte att 'ej påbörjad' listan ska vara mer konkret vad vi som utvecklare ska utföra så det blir mer tydligt för oss.
 
-SINUS Webshop är en onlinebutik som säljer skateboards och tillbehör.
+Söndag 28/2
+Alexander började med strukturen och komponenterna. La upp dessa och kopplade samman dem.
 
-Webshoppen ska ha 3 olika lägen
-* Anonym besökare
-* Inloggad Kund
-* Inloggad Admin (VG-krav)
+Måndag 1/3
+Nicholas och Jessika får problem med Npm run serve. Nicholas verkar har löst sitt problem senare under kvällen men Jessikas kvarstår.
 
-### Anonym besökare
-Det ska finnas en `registrerings`-view med ett registreringsformulär.
-En order kan genomföras som anonym användare.
+Tisdag 2/3
 
-### Inloggad Kund
-Det ska finnas en `My Account`-view med information om ditt konto och din orderhistorik.
+### Jessika har fortfarande problem med Npm run serve och det visar sig att min Sass inte fungerar med min node-version. Lyckades lösa det senare under dagen.
 
-### Inloggad Admin (VG-krav)
-Det ska finnas en `Admin Area`-view med ett CRUD-gränssnitt för alla produkter.
+Onsdag 3/3
 
-### Övriga Views och Features
-* En view för produktlista
-* En view utcheckning med formulär för kontaktinfo och betalinfo, fylls i automagiskt om man är inloggad
-* modal för enstaka produkt
-* Modal för kundkorg
-* Modal för inloggningsformulär
+### Jag fick iordning en get request för att få fram produkter från backend API. Jag stylade också iordning vår nav bar, importerade loggan och lite svg filer. Lite styling. En utmaning var definitivt API requesten. Tog ett tag att få till.
 
-# SINUS Webshop - REST API
+Torsdag 4/3
 
-## Getting Started
-
-1. `cd backend`
-2. Install dependencies `npm install`
-3. Start the server `npm run start`
-
-## EndPoint Specifikation
-
-| Resurs | Metod | Detaljer | Request Body |
-| ------ | ------ | ------ | ------ |
-| /api/auth/ | POST | Authentiserar user med email & password. Returnerar en JWT-token som används vid varje anrop API:et i en Authorization-header. | {"email": "...", "password" : "..."} |
-| /api/register/ | POST | Registrerar en användare. | Se User-modellen |
-| /api/products/ | GET | Returnerar en lista på samtliga produkter. | ❌ | 
-| /api/products/:id | GET | Returnerar en enstaka produkt. | ❌ |
-| /api/products/ | POST | Skapar en ny produkt. Enbart tillgänglig för admins | Se Product-modellen |
-| /api/products/:id | PATCH | Uppdaterar produkt. Enbart tillgänglig för admins | Se Product-modellen |
-| /api/products/:id | DELETE | Tar bort en produkt med :id. Enbart tillgänglig för admins | ❌ |
-| /api/orders | GET | Returnerar en lista på den användarens ordrar eller samtliga ordrar för admins. | ❌ |
-| /api/orders | POST | Skapar en ny order | Se Order-modellen |
-| /api/me | GET | Hämtar den inloggade användren | ❌ |
-| /api/me | PATCH | Uppdaterar profilen för den inloggade användren | Se User-modellen |
-
-### Datamodeller
-
-#### Product
-
-##### Request Body
-```javascript
- {
-  "title": 'Gretas Fury',
-  "price": 999,
-  "shortDesc": 'Unisex',
-  "longDesc": 'Skate ipsum dolor sit amet...',
-  "imgFile": 'skateboard-greta.png'
-} 
-```
-
-##### Document Model
-```javascript
- {
-  _id: '39y7gbbZk1u4ABnv', // generated serverside
-  title: 'Gretas Fury',
-  price: 999,
-  shortDesc: 'Unisex',
-  longDesc: 'Skate ipsum dolor sit amet...',
-  imgFile: 'skateboard-greta.png' // Asset logic on clientside
-} 
-```
-
-#### Order
-##### Request Body
-```js
-{
-  "items": ["productId1", "productId1", "productId2"]
-}
-```
-
-##### Document Model
-```javascript
- {
-  _id: 123,
-  timeStamp: Date.now(), 
-  status: 'inProcess',
-  items: [ 
-    {
-      title: "Tricky",
-      price: 799,
-      imgFile: "skateboard-generic.png",
-      _id: "9E6KXMIdRglW0wbL",
-      amount: 2
-    }, 
-    {
-      <etc>
-    }, 
-    ... 
-  ],
-  orderValue: 999
-} 
-```
-
-#### User
-
-##### Request Body
-```js
-{
-  "email": 'greta.thunberg@example.se',
-  "password": 'grillkorv123',
-  "name": 'Johan Kivi',
-
-  "address": {
-    "street": 'Tokitokvägen 3',
-    "zip": '123 45',
-    "city": 'Tokberga'
-  }
-} 
-```
-
-##### Document Model
-
-```javascript
-{
-  _id: '6b521d3f-3d15...' // generated server side
-  email: 'johan.kivi@zocom.se',
-  password: '$$$hashed password$$$', // hashed serverside
-  name: 'Johan Kivi',
-  role: 'admin', // or customer
-  address: {
-    street: 'Tokitokvägen 3',
-      zip: '123 45',
-      city: 'Tokberga'
-  },
-  orderHistory: [ <orderId1>, <orderId2>, ... ]
-} 
-```
-
-## Bedömningskritierer
-
-### Godkänt
-
-* State management i Vuex
-* Vue Router för navigation
-* Demonstrera komponenter, props, emits, data, computed, events
-* API-abstraktion till egen modul
-* Tydlig feature breakdown i Trello
-* Dokumenterat agilt arbetssätt i README
-* Inlämnad utvärdering i slutet
-
-
-### Väl godkänt
-* {...godkänt}
-* Admin-view för CRUD av produkter
+### Idag ska jag se försöka styla 'hem' där man ser alla produkter på en lång lista. Samt lägga in den infon vi behöver från API:et i dessa. Sedan går jag nog vidare till en produkt själv, dvs när man klickar på en produkt och ska få upp mer info om den. Vad har jag för utmaningar idag? Skulle säga uppdelning och att lyckas få ut API informationen på ett snyggt sätt på 'hem'. Det kommer nog ta tid och vara lite meckigt. Vad jag menar med uppdelning är att jag vill fundera över om det är något ytterligare man kan bryta ut ännu mer eller liknande. Idag är det också dags att uppdatera Trello boarden och lägga in kompletterande information kring User storys.
