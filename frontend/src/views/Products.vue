@@ -6,19 +6,22 @@
     v-bind:title="prod.title"
     v-bind:price="prod.price"
     v-bind:shortDesc="prod.shortDesc"
+    
      />
-
+  <SingleProduct />
 
   </div>
 </template>
 
 <script>
 import ProductItem from '@/components/ProductItem.vue'
+import SingleProduct from '@/components/SingleProduct.vue'
 import {mapState} from 'vuex'
 
 export default {
     components: {
         ProductItem,
+        SingleProduct,
     },
     computed: {
       ...mapState([

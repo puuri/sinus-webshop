@@ -7,6 +7,8 @@
     <p>
       <router-link to="/checkout">Take my money!</router-link>
     </p>
+    
+    
       
   </div>
 </template>
@@ -19,6 +21,9 @@ export default {
   },
   props: {
     shopCartHeading: String
+  },
+  computed: {
+    
   }
 }
 </script>

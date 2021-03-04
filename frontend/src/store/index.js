@@ -9,11 +9,13 @@ Vue.use(Vuex, axios)
 export default new Vuex.Store({
   state: {
     products: [],
+    cart: [],
+    cartCount: 0,
   },
   mutations: {
     setProducts(state, products){
       state.products = products
-    }
+    },
   },
   actions: {
     loadProducts({commit}){
@@ -27,6 +29,9 @@ export default new Vuex.Store({
               console.log(error)
             })
     },
+    },
+    getters: {
+      getProductById: state => state.products.find(prod => prod._id)
     }
     
   },
