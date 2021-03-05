@@ -5,6 +5,7 @@
     <div class="oneProduct">
         <p>{{title}} {{price}}kr</p>
     <h5>{{shortDesc}}</h5>
+    <img :src="require('../assets/' + img)" alt="">
     <button class="button is-success"
         @click="addToCart()">Add to Cart</button>
 </div>
@@ -32,7 +33,7 @@ export default {
         title: String,
         price: Number,
         shortDesc: String,
-        
+        img: String,
     },
     computed: {
         
@@ -62,6 +63,10 @@ export default {
     width: 35vh;
     height: 40vh;
     
+}
+
+img{
+    height: 50px;
 }
 
 

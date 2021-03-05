@@ -4,24 +4,27 @@
     <h1>{{singleProductHeading}}</h1>
     <p>Här kommer en modal som visar en närmare beskrivning av produkten.
     </p>
-    
-    <p>{{getProductById}}</p>
 
+    <p>{{product}}</p>
+<!--870HVE1qIZ4lb3Kf-->
      <router-link to="/shopCart" class="button">Take my money!</router-link>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+
 export default {
     props: {
         singleProductHeading: String
     }, 
      computed: {
-       ...mapGetters([
-         'getProductById'
-       ])
+       product(){
+         return this.$store.getters.getProductById(this.id)
+       }
      },
+     data(){return{
+       id: "870HVE1qIZ4lb3Kf",
+     }}
 }
      
 </script>

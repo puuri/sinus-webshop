@@ -1,23 +1,42 @@
 <template>
 <!-- MODAL -->
 
-    <div class="login-form">
-    <h1>{{ loginFormHeading }}</h1>
-    <p>Om användaren inte är inloggad, visas här login-formuläret (i en modal)
-    </p>
-    <form>    
-    <input id="email" placeholder="Email">
-    <input id="password" placeholder="Password">
-    <button>Sign In</button>
-    </form>
-  </div>
+
+  <form @submit.prevent="handleLoginSubmit">
+    <h3>Login</h3>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" v-model="email" placeholder="Email"/>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" v-model="password" placeholder="Password"/>
+    </div>
+
+    <button class="btn btn-primary btn-block">Login</button>
+  </form>
+
+ 
   
 </template>
 
 <script>
+//import axios from 'axios'
 export default {
   props: {
-    loginFormHeading: String
+    
+  },
+  data(){return{
+    email: '',
+    password: '', 
+  }}, 
+  methods: {
+    handleLoginSubmit(){
+      
+      this.$store.dispatch('logIn', {email: this.email, password: this.password})
+      this.$router.push('/')
+    }
   }
 }
 </script>
@@ -29,21 +48,17 @@ label {
   display: block;
 }
 
-input, textarea {
-  display: block;
-  width: 400px;
-  margin: 10px;
-  padding: 20px 10px;
-  border-radius: 10px;
-  border-width: 1px;
-}
+
 
 button{
-  border-style: solid;
-  border-radius: 5px;
-  width: 150px;
-  height: 50px;
-  padding: 15px 50px 15px 50px;
+ border-style: none;
+ width: 15vh;
+ height: 5vh;
+}
+
+.form-group{
+  margin: 30px;
+  
 }
 
 </style>
