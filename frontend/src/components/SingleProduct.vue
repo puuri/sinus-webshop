@@ -4,7 +4,10 @@
     <h1>{{singleProductHeading}}</h1>
     <p>Här kommer en modal som visar en närmare beskrivning av produkten.
     </p>
+    
     <p>{{getProductById}}</p>
+
+     <router-link to="/shopCart" class="button">Take my money!</router-link>
   </div>
 </template>
 
